@@ -14,3 +14,18 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+// $app->get('api/article','ArticleController@index');
+// $app->get('api/article/{id}','ArticleController@getArticle');
+// $app->post('api/article','ArticleController@saveArticle');
+// $app->put('api/article/{id}','ArticleController@updateArticle');
+// $app->delete('api/article/{id}','ArticleController@deleteArticle');
+
+$app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function($app)
+{
+    $app->get('article','ArticleController@index');
+    $app->get('article/{id}','ArticleController@getArticle');
+    $app->post('article','ArticleController@saveArticle');
+    $app->put('article/{id}','ArticleController@updateArticle');
+    $app->delete('article/{id}','ArticleController@deleteArticle');
+});
